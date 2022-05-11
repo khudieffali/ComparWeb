@@ -37,11 +37,11 @@ namespace Core.DataAccess.EntityFramework
 
         public List<TEntity> GetAll(Expression<Func<TEntity, bool>>? filters = null)
         {
-            using TContext context = new();
+             using TContext context = new();
 
             return filters==null?
-                context.Set<TEntity>().ToList():
-                context.Set<TEntity>().Where(filters).ToList();
+               context.Set<TEntity>().ToList():
+               context.Set<TEntity>().Where(filters).ToList();
         }
 
         public void Update(TEntity entity)

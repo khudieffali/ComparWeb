@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,9 @@ namespace Business.Abstract
 {
     public interface ICategoryService
     {
+        public Task<List<Category>> GetCategories();
+        Task<Category> GetCategoryById(int? id);
+        Task Add(Category category);
+        Task Update(Category category);
     }
 }
