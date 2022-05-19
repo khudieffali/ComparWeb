@@ -1,0 +1,217 @@
+﻿@model Entities.Concrete.Article
+
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    .mainPhoto {
+        border: 1px solid gray;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #F2F5FA;
+    }
+
+        .mainPhoto input {
+            padding-bottom: 8px;
+        }
+
+    .coverPhoto input {
+        padding-bottom: 8px;
+    }
+
+    .coverPhoto {
+        border: 1px solid gray;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #F2F5FA;
+    }
+
+    .label-photo {
+        background: gold;
+        padding: 10px 20px;
+        color: #fff;
+        margin: 10px 0;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    a {
+        text-decoration: none;
+        margin: 15px 0;
+    }
+</style>
+
+<h1>Create</h1>
+
+<h4>Article</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form id="CreateForm" asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Slug" class="control-label"></label>
+                <input asp-for="Slug" class="form-control" />
+                <span asp-validation-for="Slug" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <input asp-for="Content" class="form-control" />
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaDescription" class="control-label"></label>
+                <input asp-for="MetaDescription" class="form-control" />
+                <span asp-validation-for="MetaDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2 mainPhoto">
+                <label asp-for="MainPhoto" class="control-label text-bold"></label>
+                <input type="file" asp-for="MainPhoto" class="form-control" />
+                <span asp-validation-for="MainPhoto" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2 coverPhoto">
+                <label asp-for="CoverPhoto" class="control-label text-bold"></label>
+                <input type="file" asp-for="CoverPhoto" class="form-control" />
+                <span asp-validation-for="CoverPhoto" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2 coverPhoto">
+                <label asp-for="ArticleImages" class="control-label label-photo">Select Photo (<span>0</span>) </label>
+                <label asp-for="ArticleImages" class="form-control"></label>
+                <input type="file" id="pictureInput" asp-for="ArticleImages" class="form-control" multiple />
+                <span asp-validation-for="ArticleImages" class="text-danger"></span>
+                <div id="pictureList" class="d-flex flex-wrap">
+                </div>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input me-3" asp-for="InActive" /> @Html.DisplayNameFor(model => model.InActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class="form-control">
+                    <option value=0 disabled selected>...Kurs Mövzusu Seçin...</option>
+                    @foreach (var item in ViewBag.catList as List<Entities.Concrete.Category>)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label name="TagsId" class="control-label"></label>
+                <select id="framework" name="TagIds" multiple class="form-control" style="background-color:white">
+                    @foreach (var item in ViewBag.tagList as List<Entities.Concrete.Tag>)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary btn-upload" />
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<div class="hiddenPicture col-lg-3 col-sm-6 d-none m-t-50">
+    <img class="img-fluid img-thumbnail" src="/downloads/04049637-79f8-4deb-b5ab-dd2ebc40f174123652965_100505961875255_1192301689523879993_n.jpg" />
+    <br />
+    <br />
+    <button class="btn btn-danger btn-remove" myFile="" type="button" onclick=removePicture(this)>
+        Remove Picture
+    </button>
+</div>
+
+@section Scripts {
+<script>
+          $(document).ready(function(){
+            $('#framework').multiselect({
+          nonSelectedText: 'Teq seçin',
+          enableFiltering: true,
+          enableCaseInsensitiveFiltering: true,
+            buttonWidth:'100%'
+            });
+        });
+         let ArticleImages=[];
+         var form_data="";
+               $("#pictureInput").change(function(){
+                   ArticleImages.push(...this.files);
+                   const pictures=[...this.files];
+                   for(let i=0;i<pictures.length;i++){
+                       let pic=pictures[i]
+                        const pictureItem=$(".hiddenPicture").clone();
+                       pictureItem.removeClass("hiddenPicture")
+                       pictureItem.addClass("itemPicture")
+                       const reader=new FileReader();
+                       reader.onload=function(res){
+                       pictureItem.find("img").attr("src",res.target.result)
+                   }
+                   reader.readAsDataURL(pic);
+                   pictureItem.find(".btn-remove").attr("myFile",pic.name)
+                    pictureItem.removeClass("d-none")
+                   $("#pictureList").append(pictureItem)
+                   }
+                   $(".label-photo span").text(ArticleImages.length)
+                $("#pictureInput").val("");
+                })
+                $("#CreateForm").submit(function(e){
+                    e.preventDefault()
+                    console.log(ArticleImages)
+                    form_data=new FormData(this);
+                    for(let pic of ArticleImages){
+                        form_data.append("ArticleImages",pic)
+                    }
+                    $.ajax({
+                        url:"/ComparAdmin/Articles/Create",
+                        data:form_data,
+                        type:"POST",
+                        dataType:'json',
+                        processData:false,
+                        contentType:false,
+                        success:function(){
+                            Swal.fire({
+                              position: 'top-end',
+                              icon: 'success',
+                              title: 'Məqalə uğurla əlavə edildi',
+                              showConfirmButton: false,
+                              timer: 1000
+                            })
+                        }
+                    })
+                })
+            function removePicture(element){
+               let pictureName=$(element).attr("myFile")
+               console.log(pictureName)
+               ArticleImages=ArticleImages.filter(c=>c.name!=pictureName);
+               console.log(ArticleImages)
+                 $(".label-photo span").text(ArticleImages.length)
+                $("#pictureInput").val("");
+                $(element).parents(".itemPicture").remove();
+             }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/6.0.0-beta.2/dropzone-min.js">
+</script>
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+}
+}

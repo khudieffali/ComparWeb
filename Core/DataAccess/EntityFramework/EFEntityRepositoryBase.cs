@@ -1,4 +1,5 @@
 ﻿using Core.Entity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Core.DataAccess.EntityFramework
 {
     public class EFEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
         where TEntity : class, IEntity, new()
-        where TContext : DbContext, new()
+        where TContext : IdentityDbContext, new()
     {
         public void Add(TEntity entity)
         {
@@ -29,7 +30,7 @@ namespace Core.DataAccess.EntityFramework
             context.SaveChanges();
         }
 
-        public TEntity Get(Expression<Func<TEntity, bool>>? filters = null)
+        public TEntity Get(Expression<Func<TEntity, bool>>? filters= null)
         {
             using TContext context = new();
             return context.Set<TEntity>().SingleOrDefault(filters);

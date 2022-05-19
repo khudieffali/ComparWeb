@@ -11,7 +11,7 @@ namespace Business.Concrete
 {
     public class CategoryService : ICategoryService
     {
-        ICategoryDal _dal;
+        private readonly ICategoryDal _dal;
 
         public CategoryService(ICategoryDal dal)
         {

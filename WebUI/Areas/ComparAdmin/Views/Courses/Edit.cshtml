@@ -1,0 +1,126 @@
+﻿@model Entities.Concrete.Course
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Course</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="CreatedDate"/>
+            <input type="hidden" asp-for="SlidePhoto"/>
+            <input type="hidden" asp-for="MainPhoto"/>
+            <input type="hidden" asp-for="CourseToSkills"/>
+             @{
+                string[] arr = Model.CourseToSkills != null ? Model.CourseToSkills.Select(x => x.SkillId.ToString()).ToArray() : null;
+                string skillIds = @String.Join("-", arr);
+            }
+           <input name="oldSkill" type="hidden" value="@skillIds" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaDescription" class="control-label"></label>
+                <input asp-for="MetaDescription" class="form-control" />
+                <span asp-validation-for="MetaDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slug" class="control-label"></label>
+                <input asp-for="Slug" class="form-control" />
+                <span asp-validation-for="Slug" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SlidePhoto" class="control-label"></label>
+                <input type="file" name="newSlide" class="form-control"/>
+            </div>
+             <div class="form-group">
+                <label class="d-block font-weight-bold">Old SlidePhoto</label>
+                @if(Model.SlidePhoto!=null)
+                {
+                    <img src="@Model.SlidePhoto" width="150" />
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="MainPhoto" class="control-label"></label>
+                <input type="file" name="newMain" class="form-control"/>
+            </div>
+              <div class="form-group">
+                <label class="d-block font-weight-bold">Old MainPhoto</label>
+                @if(Model.MainPhoto!=null)
+                {
+                    <img src="@Model.MainPhoto" width="150" />
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="OneLessonDuration" class="control-label"></label>
+                <input asp-for="OneLessonDuration" class="form-control" />
+                <span asp-validation-for="OneLessonDuration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeekSchedule" class="control-label"></label>
+                <input asp-for="WeekSchedule" class="form-control" />
+                <span asp-validation-for="WeekSchedule" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalDuration" class="control-label"></label>
+                <input asp-for="TotalDuration" class="form-control" />
+                <span asp-validation-for="TotalDuration" class="text-danger"></span>
+            </div>
+               <div class="form-group">
+                <label name="SkillIds" class="control-label"></label>
+                <select id="framework" name="SkillIds" multiple class="form-control" style="background-color:white">
+                    @foreach (var item in ViewBag.skillList as List<Entities.Concrete.Skill>)
+                    {
+                        var oldSkills = Model.CourseToSkills.Select(x => x.SkillId).ToList();
+                        if (oldSkills.Contains(item.Id))
+                        {
+                            <option selected value="@item.Id">@item.Name</option>
+                            
+                        }else{
+                        <option value="@item.Id">@item.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="InActive" /> @Html.DisplayNameFor(model => model.InActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script>
+            $(document).ready(function(){
+        $('#framework').multiselect({
+      nonSelectedText: 'Skill seçin',
+      enableFiltering: true,
+      enableCaseInsensitiveFiltering: true,
+        buttonWidth:'100%'
+        });
+    });
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

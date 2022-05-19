@@ -8,8 +8,9 @@ namespace Entities.Concrete
         public int Id { get; set; }
         [Required]
         public string ArticleImg { get; set; } = null!;
-        public int ArticleId { get; set; }
-        public virtual Article Article { get; set; } = null!;
+        public int? ArticleId { get; set; }
+        public bool IsDeleted { get; set; }
+        public virtual Article? Article { get; set; }
 
     }
 }

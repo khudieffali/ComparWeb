@@ -1,0 +1,110 @@
+﻿@model Entities.Concrete.Course
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<h1>Details</h1>
+
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MetaDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MetaDescription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Slug)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Slug)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SlidePhoto)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Html.DisplayFor(modelItem => modelItem.SlidePhoto)" width="150" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MainPhoto)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Html.DisplayFor(modelItem => modelItem.MainPhoto)" width="150" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OneLessonDuration)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OneLessonDuration)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WeekSchedule)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WeekSchedule)
+        </dd>
+        <dt class="col-sm-2">
+            Course Skills
+        </dt>
+        <dd class="col-sm-10">
+            <div class="d-flex">
+                @foreach (var item in Model.CourseToSkills)
+                {
+                    if (!item.Skill.IsDeleted)
+                    {
+                        <p class="p-2">
+                            @item.Skill.Name,
+                        </p>
+                    }
+                }
+            </div>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UpdatedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UpdatedDate)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalDuration)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TotalDuration)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InActive)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InActive)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning" style="color:white">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

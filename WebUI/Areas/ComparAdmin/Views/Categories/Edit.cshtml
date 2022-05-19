@@ -10,13 +10,27 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="PhotoUrl" />
+
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhotoUrl" class="control-label"></label>
+                <input type="file" name="PhotoUrl" class="form-control" />
+                <span name="PhotoUrl" class="text-danger"></span>
+            </div>
+               <div class="form-group">
+                <label class="d-block font-weight-bold">Old Photo</label>
+                @if(Model.PhotoUrl!=null)
+                {
+                    <img src="@Model.PhotoUrl" width="150" />
+                }
             </div>
             <div class="form-group">
                 <label asp-for="Slug" class="control-label"></label>

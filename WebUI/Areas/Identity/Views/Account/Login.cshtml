@@ -1,0 +1,35 @@
+﻿@model LoginDTO
+
+@{
+    ViewData["Title"] = "Daxil Ol";
+}
+<div class="login-17">
+    <div class="container-fluid">
+        <div class="row login-box justify-content-end">
+          
+            <div class="col-lg-6 form-section clip-home">
+                <div class="form-inner">
+                    <h3>Hesaba Daxil ol</h3>
+                    <form id="account" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group form-box">
+                            <input type="text" asp-for="UserName" class="form-control" placeholder="İstifadəçi adı..." aria-label="İstifadəçi adı">
+                            <i class="flaticon-mail-2"></i>
+                        </div>
+                        <div class="form-group form-box">
+                            <input type="password" asp-for="Password" class="form-control" autocomplete="off" placeholder="Parol..." aria-label="Parol">
+                            <i class="flaticon-password"></i>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn-md btn-theme w-100 text-light">Daxil ol</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

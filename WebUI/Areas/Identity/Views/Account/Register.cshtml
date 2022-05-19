@@ -1,0 +1,55 @@
+﻿@model RegisterDTO
+
+@{
+    ViewData["Title"] = "Qeydiyyat";
+}
+<div class="login-17">
+    <div class="container-fluid">
+        <div class="row login-box justify-content-end">
+
+            <div class="col-lg-6 form-section clip-home justify-content-end">
+                <div class="form-inner">
+                    <h3>Qeydiyyat</h3>
+                    <form id="account" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group form-box">
+                            <label class="control-label">Ad, Soyad</label>
+                            <input type="text" asp-for="FullName" class="form-control" placeholder="Ad, Soyad..." aria-label="İstifadəçi adı">
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group form-box">
+                            <label class="control-label">Email</label>
+                            <input type="text" asp-for="Email" class="form-control" placeholder="Email..." aria-label="İstifadəçi adı">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group form-box">
+                            <label  class="control-label">İstifadəçi adı</label>
+                            <input type="text" asp-for="UserName" class="form-control" placeholder="İstifadəçi adı..." aria-label="İstifadəçi adı">
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group form-box">
+                            <label class="control-label">Parol</label>
+                            <input type="password" asp-for="Password" class="form-control" autocomplete="off" placeholder="Parol..." aria-label="Parol">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group form-box">
+                            <label class="control-label">Təkrar Parol</label>
+                            <input type="password" asp-for="ConfirmPassword" class="form-control" autocomplete="off" placeholder="Təkrar parol..." aria-label="Parol">
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                            <label class="control-label">@ViewBag.Password</label>
+                        <div class="form-group">
+                            <button type="submit" class="btn-md btn-theme w-100 text-light">Qeydiyyatdan keç</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+    @{
+      await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

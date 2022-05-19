@@ -8,7 +8,6 @@ namespace Entities.Concrete
         public int Id { get; set; }
         [Required]
         public string Name { get; set; } = null!;
-        public int ArticleId { get; set; }
-        public virtual Article Article { get; set; } = null!;
+        public bool IsDeleted { get; set; }
     }
 }

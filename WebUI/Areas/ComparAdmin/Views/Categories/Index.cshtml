@@ -9,20 +9,28 @@
 <p>
     <a asp-action="Create" class="btn btn-primary">Create New +</a>
 </p>
-<table class="table" id="myTable">
-    <thead>
+<table class="table table-bordered" id="myTable">
+    <thead class="table-dark">
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoUrl)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Slug)
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+              <td>
+                  <img src=" @Html.DisplayFor(modelItem => item.PhotoUrl)" width="120">
+               
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>

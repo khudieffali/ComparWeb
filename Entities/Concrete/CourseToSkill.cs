@@ -7,7 +7,6 @@ namespace Entities.Concrete
         public int Id { get; set; }
         public int CourseId { get; set; }
         public int SkillId { get; set; }
-        public virtual Course? Course { get; set; }
         public virtual Skill? Skill { get; set; }
 
     }

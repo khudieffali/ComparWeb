@@ -1,0 +1,98 @@
+﻿@model Entities.Concrete.Course
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Course</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaDescription" class="control-label"></label>
+                <input asp-for="MetaDescription" class="form-control" />
+                <span asp-validation-for="MetaDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slug" class="control-label"></label>
+                <input asp-for="Slug" class="form-control" />
+                <span asp-validation-for="Slug" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SlidePhoto" class="control-label"></label>
+                <input type="file" asp-for="SlidePhoto" class="form-control" />
+                <span asp-validation-for="SlidePhoto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MainPhoto" class="control-label"></label>
+                <input type="file" asp-for="MainPhoto" class="form-control" />
+                <span asp-validation-for="MainPhoto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OneLessonDuration" class="control-label"></label>
+                <input asp-for="OneLessonDuration" class="form-control" />
+                <span asp-validation-for="OneLessonDuration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeekSchedule" class="control-label"></label>
+                <input asp-for="WeekSchedule" class="form-control" />
+                <span asp-validation-for="WeekSchedule" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalDuration" class="control-label"></label>
+                <input asp-for="TotalDuration" class="form-control" />
+                <span asp-validation-for="TotalDuration" class="text-danger"></span>
+            </div>
+               <div class="form-group">
+                <label name="SkillId" class="control-label"></label>
+                <select id="framework" name="SkillId" multiple class="form-control" style="background-color:white">
+                    @foreach (var item in ViewBag.skillList as List<Entities.Concrete.Skill>)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="InActive" /> @Html.DisplayNameFor(model => model.InActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+@section Scripts {
+    <script>
+          $(document).ready(function(){
+        $('#framework').multiselect({
+      nonSelectedText: 'Skill seçin',
+      enableFiltering: true,
+      enableCaseInsensitiveFiltering: true,
+        buttonWidth:'100%'
+        });
+    });
+    </script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
