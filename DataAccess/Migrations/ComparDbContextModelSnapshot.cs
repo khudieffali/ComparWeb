@@ -79,7 +79,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Articles");
+                    b.ToTable("Articles", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Concrete.ArticleImage", b =>
@@ -104,7 +104,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("ArticleId");
 
-                    b.ToTable("ArticleImages");
+                    b.ToTable("ArticleImages", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Concrete.ArticleToTag", b =>
@@ -127,7 +127,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("ArticleToTags");
+                    b.ToTable("ArticleToTags", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Concrete.Category", b =>
@@ -154,7 +154,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Concrete.ContactForm", b =>
@@ -203,7 +203,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("ContactForms");
+                    b.ToTable("ContactForms", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Concrete.Course", b =>
@@ -263,7 +263,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Courses", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Concrete.CourseTopic", b =>
@@ -288,7 +288,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("CourseTopics");
+                    b.ToTable("CourseTopics", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Concrete.CourseToSkill", b =>
@@ -311,7 +311,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("SkillId");
 
-                    b.ToTable("CourseToSkills");
+                    b.ToTable("CourseToSkills", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Concrete.Skill", b =>
@@ -338,7 +338,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Skills");
+                    b.ToTable("Skills", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Concrete.Tag", b =>
@@ -358,7 +358,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tags");
+                    b.ToTable("Tags", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Concrete.Video", b =>
@@ -400,7 +400,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("CourseTopicId");
 
-                    b.ToTable("Videos");
+                    b.ToTable("Videos", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

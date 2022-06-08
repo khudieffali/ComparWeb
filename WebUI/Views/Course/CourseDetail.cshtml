@@ -1,0 +1,290 @@
+﻿@model CourseDetailVM
+@{
+    ViewData["Title"] = "Kurs Detalları";
+}
+<div class="hero-banner hero-banner1 overly hero-bg1" style="background-image:url(@Model.Course.SlidePhoto)" id="about-bg">
+    <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        <div class="navbarInfo">
+                            <div class="brk-header__element brk-header__element_skin-2 brk-header__item">
+                                <a href="/" class="brk-header__element--wrap">
+                                    <i class="fa fa-phone"></i>
+                                    <span class="brk-header__element--label font__weight-semibold">055 555 55 59</span>
+                                </a>
+                            </div>
+                            <div class="brk-header__element brk-header__element_skin-2 brk-header__item">
+                                <a href="#" class="brk-header__element--wrap">
+                                    <i class="fa fa-envelope"></i>
+                                    <span class="brk-header__element--label font__weight-medium">compar@gmail.com</span>
+                                </a>
+                            </div>
+                        </div>
+                 
+                    </div>
+                </div>
+            </div>
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="main-banner-content text-center">
+                            <h1>@Model.Course.Name</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+ </div>
+ <div class="blog-area pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="blog-details">
+                        <div class="article-img"><img src="@Model.Course.MainPhoto" alt="image">
+                            <h2>@Model.Course.Name</h2>
+                            <p>@Model.Course.Description</p>
+                            <hr/>
+                        </div>
+
+                        <div class="edu-left-program my-5">
+                            <h3>Tədris Proqramı</h3>
+                            <ul class="d-flex flex-wrap my-4 no-gutters">
+                              @foreach (var item in @Model.Course.CourseToSkills.Select(x=>x.Skill))
+                                { 
+                                
+                                <li class="col-lg-3 col-sm-6">
+                                    <img src="@item.MainPhoto" alt="">
+                                    <h6>@item.Name</h6>
+                                </li>
+                                }
+                            </ul>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <div class="pl-20">
+                        <div class="widget-area" id="secondary">
+                         
+                            <div class="widget widget_categories">
+                                   <ul>
+                                    <li id="course"><a href="/blog/"><i class="bx bx-tachometer"></i>Həftə içi: <span
+                                                class="post-count">@Model.Course.WeekSchedule</span></a></li>
+                                     <li id="course"><a href="/blog/"><i class="bx bx-time"></i>Bir dərs müddəti:<span
+                                                class="post-count">@Model.Course.OneLessonDuration saat</span></a></li>
+                                    <li id="course"><a href="/blog/"><i class="bx bx-time"></i>Ümumi dərs müddəti:<span
+                                                class="post-count">@Model.Course.TotalDuration saat</span></a></li>
+                                    <li id="course"><a href="/blog/"><i class="bx bx-atom"></i> Imtahan: <span
+                                                class="post-count"><i class="fa-solid fa-check"></i></span></a></li>
+                            
+                                    <li id="course"> <a href="/blog/"><i class="bx bx-certification"></i>
+                                            Sertifikat:<span class="post-count"><i
+                                                    class="fa-solid fa-check"></i></span></a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accordion menu -->
+ @*   <section class="faq-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h3>Course content</h3>
+                    <span class="lectures">10 sections • 155 lectures • 22h 13m total length</span>
+                    <div class="faq-accordion">
+                        <div data-accordion-component="Accordion" class="accordion course-accordion">
+                            <div data-accordion-component="AccordionItem" class="accordion__item">
+                                <div data-accordion-component="AccordionItemHeading" role="heading"
+                                    class="accordion__heading" aria-level="3">
+                                    <div class="accordion__button" id="accordion__heading-a" aria-disabled="false"
+                                        aria-expanded="false" aria-controls="accordion__panel-a" role="button"
+                                        tabindex="0" data-accordion-component="AccordionItemButton">Course Overview
+                                        <span>5 lectures </span></div>
+                                </div>
+                                <div data-accordion-component="AccordionItemPanel" class="accordion__panel"
+                                    role="region" aria-labelledby="accordion__heading-a" id="accordion__panel-a"
+                                    hidden="">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type.</p>
+                                </div>
+                            </div>
+                            <div data-accordion-component="AccordionItem" class="accordion__item">
+                                <div data-accordion-component="AccordionItemHeading" role="heading"
+                                    class="accordion__heading" aria-level="3">
+                                    <div class="accordion__button" id="accordion__heading-b" aria-disabled="false"
+                                        aria-expanded="false" aria-controls="accordion__panel-b" role="button"
+                                        tabindex="0" data-accordion-component="AccordionItemButton">Python Setup<span>12
+                                            lectures </span></div>
+                                </div>
+                                <div data-accordion-component="AccordionItemPanel" class="accordion__panel"
+                                    role="region" aria-labelledby="accordion__heading-b" id="accordion__panel-b"
+                                    hidden="">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type.</p>
+                                </div>
+                            </div>
+                            <div data-accordion-component="AccordionItem" class="accordion__item">
+                                <div data-accordion-component="AccordionItemHeading" role="heading"
+                                    class="accordion__heading" aria-level="3">
+                                    <div class="accordion__button" id="accordion__heading-c" aria-disabled="false"
+                                        aria-expanded="false" aria-controls="accordion__panel-c" role="button"
+                                        tabindex="0" data-accordion-component="AccordionItemButton">Errors and
+                                        Exceptions Handling<span>33 lectures </span></div>
+                                </div>
+                                <div data-accordion-component="AccordionItemPanel" class="accordion__panel"
+                                    role="region" aria-labelledby="accordion__heading-c" id="accordion__panel-c"
+                                    hidden="">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type.</p>
+                                </div>
+                            </div>
+                            <div data-accordion-component="AccordionItem" class="accordion__item">
+                                <div data-accordion-component="AccordionItemHeading" role="heading"
+                                    class="accordion__heading" aria-level="3">
+                                    <div class="accordion__button" id="accordion__heading-d" aria-disabled="false"
+                                        aria-expanded="false" aria-controls="accordion__panel-d" role="button"
+                                        tabindex="0" data-accordion-component="AccordionItemButton">Errors and
+                                        Exceptions Handling<span>52 lectures </span></div>
+                                </div>
+                                <div data-accordion-component="AccordionItemPanel" class="accordion__panel"
+                                    role="region" aria-labelledby="accordion__heading-d" id="accordion__panel-d"
+                                    hidden="">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type.</p>
+                                </div>
+                            </div>
+                            <div data-accordion-component="AccordionItem" class="accordion__item">
+
+                                <div data-accordion-component="AccordionItemHeading" role="heading"
+                                    class="accordion__heading" aria-level="3">
+                                    <div class="accordion__button" id="accordion__heading-e" aria-disabled="false"
+                                        aria-expanded="false" aria-controls="accordion__panel-e" role="button"
+                                        tabindex="0" data-accordion-component="AccordionItemButton">Can I pay via an
+                                        invoice?<span>18 lectures </span></div>
+                                </div>
+                                <div data-accordion-component="AccordionItemPanel" class="accordion__panel"
+                                    role="region" aria-labelledby="accordion__heading-e" id="accordion__panel-e"
+                                    hidden="">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type.</p>
+                                </div>
+                            </div>
+                            <div data-accordion-component="AccordionItem" class="accordion__item">
+
+                                <div data-accordion-component="AccordionItemHeading" role="heading"
+                                    class="accordion__heading" aria-level="3">
+                                    <div class="accordion__button" id="accordion__heading-e" aria-disabled="false"
+                                        aria-expanded="false" aria-controls="accordion__panel-e" role="button"
+                                        tabindex="0" data-accordion-component="AccordionItemButton">Can I pay via an
+                                        invoice?<span>18 lectures </span></div>
+                                </div>
+                                <div data-accordion-component="AccordionItemPanel" class="accordion__panel"
+                                    role="region" aria-labelledby="accordion__heading-e" id="accordion__panel-e"
+                                    hidden="">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type.</p>
+                                </div>
+                            </div>
+                            <div data-accordion-component="AccordionItem" class="accordion__item">
+                                <div data-accordion-component="AccordionItemHeading" role="heading"
+                                    class="accordion__heading" aria-level="3">
+                                    <div class="accordion__button" id="accordion__heading-d" aria-disabled="false"
+                                        aria-expanded="false" aria-controls="accordion__panel-d" role="button"
+                                        tabindex="0" data-accordion-component="AccordionItemButton">How can I
+                                        cancel/pause my subscription?<span>52 lectures </span></div>
+                                </div>
+                                <div data-accordion-component="AccordionItemPanel" class="accordion__panel"
+                                    role="region" aria-labelledby="accordion__heading-d" id="accordion__panel-d"
+                                    hidden="">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type.</p>
+                                </div>
+                            </div>
+                            <div data-accordion-component="AccordionItem" class="accordion__item">
+
+                                <div data-accordion-component="AccordionItemHeading" role="heading"
+                                    class="accordion__heading" aria-level="3">
+                                    <div class="accordion__button" id="accordion__heading-e" aria-disabled="false"
+                                        aria-expanded="false" aria-controls="accordion__panel-e" role="button"
+                                        tabindex="0" data-accordion-component="AccordionItemButton">Can I pay via an
+                                        invoice?<span>99 lectures </span></div>
+                                </div>
+                                <div data-accordion-component="AccordionItemPanel" class="accordion__panel"
+                                    role="region" aria-labelledby="accordion__heading-e" id="accordion__panel-e"
+                                    hidden="">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type.</p>
+                                </div>
+                            </div>
+                            <div data-accordion-component="AccordionItem" class="accordion__item">
+
+                                <div data-accordion-component="AccordionItemHeading" role="heading"
+                                    class="accordion__heading" aria-level="3">
+                                    <div class="accordion__button" id="accordion__heading-e" aria-disabled="false"
+                                        aria-expanded="false" aria-controls="accordion__panel-e" role="button"
+                                        tabindex="0" data-accordion-component="AccordionItemButton">Can I pay via an
+                                        invoice?<span>25 lectures </span></div>
+                                </div>
+                                <div data-accordion-component="AccordionItemPanel" class="accordion__panel"
+                                    role="region" aria-labelledby="accordion__heading-e" id="accordion__panel-e"
+                                    hidden="">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@
+
+
+   @* <!-- information -->
+    <div class="blog-area ptb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="blog-details">
+                        <div class="article-content">
+
+                            <h2>Nəyə görə proqramlaşdırma?</h2>
+                            <p>Proqramlaşdırma üçün ali təhsilindən asılı olmayaraq, riyazi və humanitar biliklərin
+                                olması o qədər də önəmli deyil. Sadəcə, bu sahəyə həvəsli olmağınız kifayətdir. Çox
+                                dərin və çoxlarına çətin gələn proqramlaşdırma sahəsini o qədər asanlaşdırdıq ki, artıq
+                                bu sahədə geniş məlumatları tez bir zamanda qavrama imkanınız olacaq. Problemləri həll
+                                etmək və başqa şəxslər tərəfindən məhsuldar istifadə ediləcək bir şey yaratdığınızı
+                                bilmək həyəcan verici və eyni zamanda sizi gücləndirici hissdir.</p>
+
+                            <p>Kodlaşdırma praktiki problemləri həll etmək üçün ən asan yollardan biridir.Əgər hər hansı
+                                bir mühəndislik sahəsini nəzərdən keçirsəniz, ağlınızda olan hər hansı dizaynı yaratmaq
+                                üçün bir növ xammal, komponent, böyük maşın və hissələrə ehtiyacınız var. Lakin,
+                                kodlaşdırma yalnız bir komputerə və internet bağlantısına ehtiyac duyur. Günümüzdə demək
+                                olar ki, bütün sahələrdə proqramlaşmaya ehtiyac var və bu tələbat gün keçdikcə daha da
+                                artır. Veb saytları, oyunları, proqramları 0-dan yaratmağı düşünürsünüzsə, bu sahədə
+                                ixtisaslaşaraq yeni bir peşəyə yiyələnmək öz əlinizdədir.</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@

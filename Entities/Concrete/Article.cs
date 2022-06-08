@@ -35,7 +35,7 @@ namespace Entities.Concrete
         public virtual Category? Category { get; set; }
         public virtual List<Video>? Video { get; set; }
         public virtual List<ArticleToTag>? ArticleToTags{ get; set; }
-        public virtual List<ArticleImage>? ArticleImages { get; set; }
+        public List<ArticleImage>? ArticleImages { get; set; }
 
     }
 }

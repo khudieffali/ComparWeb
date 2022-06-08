@@ -1,49 +1,140 @@
-﻿<!DOCTYPE html>
+﻿<!<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebUI</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WebUI.styles.css" asp-append-version="true" />
-</head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>ComparAkademiya - @ViewData["Title"]</title>
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="/dist/shared/css/shared.css" rel="stylesheet"><link href="/dist/sharedDynamic/css/sharedDynamic.css" rel="stylesheet"></head>
 <body>
+    <!-- header -->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebUI</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+        <div id="navbar" class="navbar-area navbar-style-2">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" style="width: 110px;" href="/">
+                        <img src="~/dist/images/compar-logo-white.svg" class="white-logo" alt="logo">
+                        <img src="~/dist/images/compar-logo-gradiant.svg" class="black-logo" alt="">
+                    </a>
+
+                    <button class="btn-navbar-toggler toggle-menu" id="toggleMenu" onclick="toggleMenu()" type="button">
+                        <span class="icon-bar top-bar"></span>
+                        <span class="icon-bar middle-bar"></span>
+                        <span class="icon-bar bottom-bar"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav scroll">
+                            <li class="nav-item"><a class="nav-link">TƏDRİS PROQRAMLARI
+                                <i class="icofont-thin-down"></i></a>
+                                @await Component.InvokeAsync("Courses")
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link" asp-controller="Academy" asp-action="Index">AKADEMİYA</a>
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link" asp-controller="Faq" asp-action="Faq">FAQ</a>
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link" asp-controller="Article" asp-action="ArticleList">BLOQ</a>
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link" asp-controller="Contact" asp-action="Index">ƏLAQƏ</a></li>
+
+                        </ul>
+                        <!-- <div class="others-options"><a class="btn btn-primary" href="/pricing/">Let's Begin</a></div> -->
+                    </div>
+                </div>
+            </nav>
+        </div>
+      
+
+     
+    </header>
+
+            @RenderBody()
+    <!-- footer -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-3">
+                    <div class="single-footer-widget">
+                        <div class="logo">
+                            <a class="footer-logo" style="width: 110px;" href="/">
+                                <img src="~/dist/images/compar-logo-gradiant.svg" alt="">
+                            </a>
+                        </div>
+              
+                        <ul class="social-links">
+                            <li><a target="_blank" href="https://www.instagram.com/compar_academy/"><i
+                                        class="fa-brands fa-instagram"></i></a></li>
+                            <li><a target="_blank" href="https://www.facebook.com/comparacademy"><i
+                                        class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a target="_blank" href="https://www.linkedin.com/company/compar-academy/mycompany/?viewAsMember=true"><i class="fa-brands fa-linkedin"></i></a>
+                            <li><a target="_blank" href="https://api.whatsapp.com/send/?phone=994508006353&text&app_absent=0"><i class="fa-brands fa-whatsapp"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="single-footer-widget">
+                        <h3>Səhifələr</h3>
+                        <ul class="list">
+                            <li><a href="/">Ana Səhifə</a></li>
+                            <li><a>Tədris Proqramları</a></li>
+                            <li><a asp-controller="Academy" asp-action="Index">Akademiya</a></li>
+                           
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-lg-3">
+                    <div class="single-footer-widget">
+                        <h3>Keçidlər</h3>
+                        <ul class="list">
+                            <li><a asp-controller="Article" asp-action="ArticleList">Məqalələr</a></li>
+                             <li><a asp-controller="Contact" asp-action="Index">Əlaqə</a></li>
+                            <li><a asp-controller="Faq" asp-action="Faq">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="single-footer-widget">
+                        <h3>Əlaqə</h3>
+                        <ul class="get-in-touch">
+                            <li class="mb-4 d-flex align-items-center"><i class="icofont-location-pin"></i>Zərgərpalan küçəsi 137</li>
+                            <li class="mb-4"><i class="icofont-live-support"></i><a
+                                    href="tel:+994-50-800-63-53">+994 50 800 63 53</a>
+                            </li>
+                            <li class="mb-4"><i class="icofont-envelope"></i><a
+                                    href="mailto:info@compar.az">info@compar.az</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - WebUI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <p>Copyright ©
+                    <!-- -->2022
+                    <!-- --> Compar Academy. Bütün hüquqlar <a href="" target="_blank">WebSuper Team</a> tərəfindən qorunur.</p>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- scroll-to-top -->
+    <div id="myBtn" title="Go to top" class="scroll-to-top">
+        <i class="pe-7s-angle-up"></i>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    
+<script defer src="/dist/shared/js/shared.bundle.js"></script><script defer src="/dist/sharedDynamic/js/sharedDynamic.bundle.js"></script></body>
     @await RenderSectionAsync("Scripts", required: false)
-</body>
+
 </html>
+

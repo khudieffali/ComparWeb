@@ -1,0 +1,116 @@
+﻿@model ArticleDetailVM
+@{
+    ViewData["Title"] = "Məqalə Detalları";
+}
+<div class="hero-banner hero-banner1 overly hero-bg1" style="background-image:url(@Model.Article.CoverPhoto)" id="about-bg">
+    <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        <div class="navbarInfo">
+                            <div class="brk-header__element brk-header__element_skin-2 brk-header__item">
+                                <a href="/" class="brk-header__element--wrap">
+                                    <i class="fa fa-phone"></i>
+                                    <span class="brk-header__element--label font__weight-semibold">055 555 55 59</span>
+                                </a>
+                            </div>
+                            <div class="brk-header__element brk-header__element_skin-2 brk-header__item">
+                                <a href="#" class="brk-header__element--wrap">
+                                    <i class="fa fa-envelope"></i>
+                                    <span class="brk-header__element--label font__weight-medium">compar@gmail.com</span>
+                                </a>
+                            </div>
+                        </div>
+                 
+                    </div>
+                </div>
+            </div>
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="main-banner-content text-center">
+                            <h1>@Model.Article.Name</h1>
+                            <p>@Model.Article.Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ <!-- blog area -->
+    <div class="blog-area ptb-100">
+        <div class="container">
+            <div class="row">
+              
+                <div class="col-lg-8 col-md-12">
+                    <div class="blog-details">
+                        <div class="article-img"><img src="@Model.Article.MainPhoto" alt="image">
+                               <ul class="d-flex flex-wrap my-4 no-gutters">
+                              @foreach (var arImg in @Model.Article.ArticleImages)
+                                { 
+                                
+                                <li class="col-lg-3 col-sm-6">
+                                    <img src="@arImg.ArticleImg" alt="">
+                                </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="article-content">
+                            <ul class="entry-meta">
+                                <li><i class="fa-solid fa-calendar-days"></i> @Model.Article.CreatedDate.ToString("MMM") @Model.Article.CreatedDate.Day, @Model.Article.CreatedDate.Year</li>
+                            </ul>
+                            <p>@Model.Article.Content</p>
+                            <ul class="category">
+                                <li><span>Teqlər:</span></li>
+                                @foreach (var tags in @Model.Article.ArticleToTags.Select(x=>x.Tag))
+                                {
+                                <li><a href="#">@tags.Name</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+               
+                </div>
+
+                <div class="col-lg-4 col-md-12">
+                    <div class="pl-20">
+                        <div class="widget-area" id="secondary">
+                            <div class="widget widget_posts_thumb">
+                                <h3 class="widget-title">Ən çox baxılanlar</h3>
+                                @foreach (var popArticle in Model.PopularArticles)
+                                {
+                                        <article class="item"><a class="thumb" asp-controller="Article" asp-action="ArticleDetails" asp-route-id="@popArticle.Id"><span
+                                            class="fullimage cover bg1" role="img" style="background-image:url(@popArticle.MainPhoto)"></span></a>
+                                    <div class="info"><time> @popArticle.CreatedDate.ToString("MMM") @popArticle.CreatedDate.Day, @popArticle.CreatedDate.Year</time>
+                                        <h4 class="title usmall"><a asp-controller="Article" asp-action="ArticleDetails" asp-route-id="@popArticle.Id">@popArticle.Name</a></h4>
+                                    </div>
+                                    <div class="clear"></div>
+                                </article>
+                                }
+                            
+                            </div>
+                            <div class="widget widget_recent_entries">
+                                <h3 class="widget-title">Ən son paylaşılanlar</h3>
+                                <ul>
+                                    @foreach (var newArticle in Model.NewArticles)
+                                    {
+                                          <li><a asp-controller="Article" asp-action="ArticleDetails" asp-route-id="@newArticle.Id">@newArticle.Name</a><span
+                                            class="post-date">@newArticle.CreatedDate.ToString("MMM") @newArticle.CreatedDate.Day, @newArticle.CreatedDate.Year</span></li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="widget widget_categories">
+                                <h3 class="widget-title">Kateqoriyalar</h3>
+                                <ul>
+                                    @foreach (var cat in Model.Categories)
+                                    {
+                                    <li><a asp-controller="Article" asp-action="ArticleList" asp-route-categoryId="@cat.Id">@cat.Name<span class="post-count">(@cat.Articles.Where(x=>!x.IsDeleted).Count())</span></a></li>
+                                    }
+                                </ul>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

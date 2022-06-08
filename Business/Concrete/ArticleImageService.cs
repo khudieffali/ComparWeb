@@ -11,7 +11,7 @@ namespace Business.Concrete
 {
     public class ArticleImageService : IArticleImageService
     {
-        IArticleImageDal _dal;
+        private readonly IArticleImageDal _dal;
 
         public ArticleImageService(IArticleImageDal dal)
         {
@@ -21,6 +21,17 @@ namespace Business.Concrete
         public async Task AddArticleImage(ArticleImage articleImage)
         {
             _dal.Add(articleImage);
+        }
+
+        public async Task DeleteArticleImages(List<ArticleImage> articleImages)
+        {
+           await _dal.DeleteRange(articleImages);
+        }
+
+        public async Task<List<ArticleImage>> GetByIdArticleImages(List<int>? ids, int? articleId)
+        {
+            var articleImages = await _dal.GetByIdArticleImages(x => ids.Contains(x.Id) && x.ArticleId == articleId);
+            return articleImages;
         }
     }
 }

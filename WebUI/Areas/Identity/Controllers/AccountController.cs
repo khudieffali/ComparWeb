@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Entities.Concrete;
 using Entities.Concrete.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,9 +20,8 @@ namespace WebUI.Areas.Identity.Controllers
             _signInManager = signInManager;
         }
         [HttpGet]
-        public async Task<IActionResult> Login()
+        public IActionResult Login()
         {
-
             return View();
         }
 
@@ -39,7 +39,8 @@ namespace WebUI.Areas.Identity.Controllers
             return RedirectToAction("Index", "Dashboard", new {area="ComparAdmin"});
         }
         [HttpGet]
-        public async Task<IActionResult> Register()
+        [Authorize("Admin")]
+        public IActionResult Register()
         {
             return View();
         }

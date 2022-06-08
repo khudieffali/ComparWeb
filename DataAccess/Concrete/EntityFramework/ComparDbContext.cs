@@ -26,7 +26,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Skill> Skills { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Tag> Tags { get; set; }
-        public DbSet<Video> Videos { get; set; }
+        public DbSet<Video>? Videos { get; set; }
         public DbSet<ArticleToTag> ArticleToTags { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {

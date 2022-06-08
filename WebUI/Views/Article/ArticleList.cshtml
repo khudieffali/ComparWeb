@@ -1,0 +1,84 @@
+﻿@model ArticleVM
+@{
+    ViewData["Title"] = "Məqalələr";
+}
+<div class="hero-banner hero-banner1 overly hero-bg1" id="about-bg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 ">
+                <div class="navbarInfo">
+                    <div class="brk-header__element brk-header__element_skin-2 brk-header__item">
+                        <a href="/" class="brk-header__element--wrap">
+                            <i class="fa fa-phone"></i>
+                            <span class="brk-header__element--label font__weight-semibold">055 555 55 59</span>
+                        </a>
+                    </div>
+                    <div class="brk-header__element brk-header__element_skin-2 brk-header__item">
+                        <a href="#" class="brk-header__element--wrap">
+                            <i class="fa fa-envelope"></i>
+                            <span class="brk-header__element--label font__weight-medium">compar@gmail.com</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="main-banner-content text-center">
+                    <h1>Məqalələr</h1>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------- Latest News -------------->
+<section class="blog-area ptb-100">
+    <div class="container">
+        <div class="section-title">
+            <h2>Ən Son Məqalələr</h2>
+            <p>
+                Texnologiya xəbərləri.
+                <br/>
+                Texnologiya aləmində ən son yeniliklər.
+            </p>
+        </div>
+
+        <div class="owl-carousel blog-slides owl-theme">
+            @if (Model.Articles != null && Model.Articles.Count > 0)
+            {
+                @foreach (var article in Model.Articles)
+                {
+                    <div class="single-blog-item">
+                        <div class="blog-image">
+                            <a asp-controller="Article" asp-action="ArticleDetails" asp-route-id="@article.Id">
+                                <img class="img-fluid" src="@article.MainPhoto" alt="@article.MetaDescription">
+                            </a>
+                            <div class="post-tag"><a href="/blog/">@article.Category.Name</a></div>
+                        </div>
+                        <div class="blog-post-content">
+                            <span class="date">@article.CreatedDate.ToString("MMM") @article.CreatedDate.Day, @article.CreatedDate.Year</span>
+                            <h3><a asp-controller="Article" asp-action="ArticleDetails" asp-route-id="@article.Id">@article.Name</a></h3>
+                            <p>  @(article.Description!=null && article.Description.Length>150 ? article.Description.Substring(0,150):article.Description)...</p><a class="read-more-btn" asp-controller="Article" asp-action="ArticleDetails" asp-route-id="@article.Id">
+                                Ətraflı
+                                Oxu<i class="fa-solid fa-angles-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="alert alert-danger">Axtarışa uyğun məqalə tapılmadı</p>
+            }
+
+        </div>
+    </div>
+
+
+
+</section>
+

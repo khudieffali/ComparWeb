@@ -16,12 +16,11 @@ namespace Entities.Concrete
         [Required]
         public DateTime CreatedDate { get; set; }
         public DateTime? Date { get; set; }
-        [Required]
         public bool DemoRequest { get; set; }
         public bool IsRead { get; set; }
         public bool IsDeleted { get; set; }
-        public int? CategoryId { get; set; }
         [Required]
+        public int? CategoryId { get; set; }
         public virtual Category? Category { get; set; }
     }
 }

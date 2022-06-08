@@ -21,7 +21,7 @@ namespace Business.Concrete
       
         public async Task DeleteCourseSkill(List<CourseToSkill> courseToSkill)
         {
-           _dal.DeleteRange(courseToSkill);
+          await _dal.DeleteRange(courseToSkill);
         }
 
         public Task<CourseToSkill> GetByIdCourseToSkill(int? id,int? courseId)

@@ -12,6 +12,8 @@ namespace DataAccess.Abstract
     public interface ICourseDal : IEntityRepository<Course>
     {
         Task<List<Course>> GetAllInclude(Expression<Func<Course, bool>>? filters);
+        Task<List<Course>> GetAllHomeInclude(Expression<Func<Course, bool>>? filters);
+
         Task<Course> GetByIdInclude(Expression<Func<Course, bool>>? filters);
         Task AddMyCourse(Course course);
         Task  UpdateMyCourse(Course course);

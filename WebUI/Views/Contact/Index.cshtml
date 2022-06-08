@@ -1,0 +1,233 @@
+﻿@model ContactForm
+@{
+    ViewData["Title"] = "Əlaqə";
+}
+ <div class="hero-banner hero-banner1 overly hero-bg1" id="about-bg">
+     <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 ">
+                        <div class="navbarInfo">
+                            <div class="brk-header__element brk-header__element_skin-2 brk-header__item">
+                                <a href="/" class="brk-header__element--wrap">
+                                    <i class="fa fa-phone"></i>
+                                    <span class="brk-header__element--label font__weight-semibold">055 555 55 59</span>
+                                </a>
+                            </div>
+                            <div class="brk-header__element brk-header__element_skin-2 brk-header__item">
+                                <a href="#" class="brk-header__element--wrap">
+                                    <i class="fa fa-envelope"></i>
+                                    <span class="brk-header__element--label font__weight-medium">compar@gmail.com</span>
+                                </a>
+                            </div>
+                        </div>
+                 
+                    </div>
+                </div>
+            </div>
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="main-banner-content text-center">
+                            <h1>Əlaqə</h1>
+                            <p>Bizimlə əlaqə yaratmağınızdan məmnun olardıq.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- Mail Here -->
+<div class="contact-info-area pt-100 pb-70">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="contact-info-box">
+                    <div class="icon">
+                        <i class="pe-7s-mail"></i>
+                    </div>
+                    <h3>Bura Poçt Göndər</h3>
+                    <p><a href="">İnfo@compar.az</a></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="contact-info-box">
+                    <div class="icon"><i class="pe-7s-map-2"></i></div>
+                    <h3>Bura Ziyarət Et</h3>
+                    <p>27 Division St, New York, <br> NY 10002, USA</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="contact-info-box">
+                    <div class="icon"><i class="pe-7s-call"></i></div>
+                    <h3>Bura zəng edin</h3>
+                    <p><a href="+1234567890">+994-50-800-63-53</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- //Get in touch// -->
+<div class="contact-form">
+    <h2>Akademiya ilə tanışlıq və konsultasiya üçün müraciət edin</h2>
+@*    <form id="contactForm" asp-action="Index" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <input type="text" name="FullName" id="FullName" class="form-control"
+                               placeholder="Ad, Soyad" required="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <input type="email" name="Email" id="Email" class="form-control"
+                               placeholder="E-mail adres" required="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <input type="text" name="PhoneNumber" id="PhoneNumber"
+                               class="form-control" placeholder="Əlaqə nömrəsi" required="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-group">
+                        <textarea name="Note" class="form-control" id="Note" rows="8"
+                                  placeholder="Qeyd" required=""></textarea>
+                    </div>
+                </div>
+                <div class="form-group col-lg-6 col-md-12 text-start">
+                    <select name="CategoryId" class="form-control" required="">
+                         <option value=0 disabled selected>Seçin</option>
+                        @foreach (var item in ViewBag.catList as List<Entities.Concrete.Category>)
+                        {
+                            <option value="@item.Id" required="">@item.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-check form-switch col-lg-6 text-start ps-5 d-flex">
+                    <div class="col-lg-6 text-start">
+                        <input class="form-check-input" type="checkbox" asp-for="DemoRequest">
+                        <label class="form-check-label" for="DemoRequest">Ödənişsiz sınaq dərsində iştirak</label>
+                    </div>
+                    <div class="col-lg-6 text-end">
+                        <div class="form-group"><input type="date" name="Date" id="Date"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12">
+                    <button type="submit" class="btn btn-primary">Sorğu Göndər</button>
+                </div>
+            </div>
+        </div>
+    </form>*@
+       <form id="contactForm">
+            <div class="container">
+                <div class="row">
+
+                    <div class="both-side col-lg-12 d-flex">
+                        <div class="left-side  col-lg-6" style="padding-right: 30px;" >
+
+                            <div class="form-group" >
+                                <input type="text" name="FullName" id="FullName" class="form-control"
+                                    placeholder="Ad, Soyad" required="">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="email" name="Email" id="Email" class="form-control" placeholder="Email"
+                                    required="">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="PhoneNumber" id="PhoneNumber" class="form-control"
+                                    placeholder="Telefon" required="">
+                            </div>
+
+                            <div class="form-group">
+                                 <select name="CategoryId" class="form-control" required="">
+                         <option value=0 disabled selected>Seçin</option>
+                        @foreach (var item in ViewBag.catList as List<Entities.Concrete.Category>)
+                        {
+                            <option value="@item.Id" required="">@item.Name</option>
+                        }
+                    </select>
+                            </div>
+
+                        </div>
+                        <div class="right-side col-lg-6" style="padding-left: 30px;">
+                           
+                                <div class="form-group">
+                                    <textarea name="Note" class="form-control" id="Note" rows="6" placeholder="Qeyd"
+                                        required=""></textarea>
+                            </div>
+                            <div class="form-check form-switch col-lg-6 text-start">
+                                <div class=" text-start">
+                                    <input class="form-check-input" type="checkbox" asp-for="DemoRequest">
+                                    <label class="form-check-label" for="DemoRequest">Demo dərsdə iştirak</label>
+                                </div>
+                            </div>
+                            <div class="form-group" >
+                                <input type="date" name="Date" id="Date" class="form-control">
+                            </div>
+                         
+                        
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <button type="submit" class="btn btn-primary">Mesaj Göndər</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+</div>
+
+
+@*<!-- Get the only new update from this newsletter -->
+    <div class="ptb-100">
+    <section class="newsletter-area">
+    <div class="container">
+    <div class="newsletter-inner-area">
+    <div class="newsletter-content">
+    <span class="sub-title">Get Started Instantly!</span>
+    <h2>Get the only new update from this newsletter</h2>
+    <form class="newsletter-form">
+    <input type="email" class="form-control" placeholder="Enter your email" name="email"
+    required="">
+    <button type="submit">Subscribe!</button>
+    </form>
+    </div>
+    </div>
+    </div>
+    </section>
+    </div>*@
+@section Scripts{
+<script>
+    $("#contactForm").submit(function(e){
+                    e.preventDefault()
+                    form_data=new FormData(this);
+                    $.ajax({
+                        url:"Contact/Index",
+                        data:form_data,
+                        type:"POST",
+                        dataType:'json',
+                        processData:false,
+                        contentType:false,
+                        success:function(){
+                              Swal.fire({
+                              position: 'center-center',
+                              icon: 'success',
+                              title: "Məktubunuz uğurla göndərildi",
+                              showConfirmButton: false,
+                              timer: 1500
+                            })
+                           setTimeout( function(){
+                             window.history.back();
+                           } ,1500);
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                              alert("Zəhmət olmasa Maraqlandığınız sahəni qeyd edin");
+                         }
+                        })
+                    })
+</script>
+}

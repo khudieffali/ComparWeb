@@ -29,13 +29,12 @@
     <link href="/adminpanel/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" integrity="sha512-mR/b5Y7FRsKqrYZou7uysnOdCIJib/7r5QeJMFvLNHNhtye3xJp1TdJVPLtetkukFn227nKpXD9OjUc09lx97Q==" crossorigin="anonymous"
           referrerpolicy="no-referrer" />
-    <script src="sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
     <link rel="stylesheet" href="/adminpanel/css/bootstrap-multiselect.css" type="text/css" />
 
     <link href="/adminpanel/css/icons.css" rel="stylesheet" type="text/css">
     <link href="/adminpanel/css/flag-icon.min.css" rel="stylesheet" type="text/css">
     <link href="/adminpanel/css/style.css" rel="stylesheet" type="text/css">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/6.0.0-beta.2/dropzone.min.css" />
 
 
@@ -123,7 +122,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-12">
                         <div class="mobile-logobar">
-                            <a href="index.html" class="mobile-logo"><img width="30px" src="/adminpanel/images/123652965_100505961875255_1192301689523879993_n.jpg" class="img-fluid" alt="logo"></a>
+                            <a href="/ComparAdmin/Home/Index" class="mobile-logo"><img width="30px" src="/adminpanel/images/123652965_100505961875255_1192301689523879993_n.jpg" class="img-fluid" alt="logo"></a>
                         </div>
                         <div class="mobile-togglebar">
                             <ul class="list-inline mb-0">
@@ -198,6 +197,9 @@
                                                             <li class="media dropdown-item p-b-0">
                                                                 <a asp-area="Identity" asp-action="ChangePassword" asp-controller="Account" asp-route-id="@SignInManager.UserManager.GetUserId(User)" class="profile-icon"><img src="/adminpanel/images/svg-icon/user.svg" class="img-fluid" alt="user">Parolu Dəyiş</a>
                                                             </li>
+                                                              <li class="media dropdown-item p-b-0">
+                                                                <a asp-area="Identity" asp-action="Register" asp-controller="Account" class="profile-icon btn">Yeni Qeydiyyat</a>
+                                                            </li>
                                                             <li class="media dropdown-item m-t-5 p-l-10">
                                                                 <form method="post" asp-area="Identity" asp-controller="Account" asp-action="Logout">
                                                                     <button type="submit" style="width:100%"
@@ -229,7 +231,7 @@
                         <h4 class="page-title">Keçidlər</h4>
                         <div class="breadcrumb-list">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">İdarə Paneli</a></li>
+                                <li class="breadcrumb-item"><a href="/ComparAdmin/Dashboard/Index">İdarə Paneli</a></li>
                                 <li class="breadcrumb-item"><a href="#">@ViewData["Link"]</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
                             </ol>
@@ -258,7 +260,6 @@
         <script src="/adminpanel/js/jquery.min.js"></script>
         <script src="/adminpanel/js/popper.min.js"></script>
         <script src="/adminpanel/js/bootstrap.min.js"></script>
-        <script src="sweetalert2.all.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

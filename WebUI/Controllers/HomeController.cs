@@ -1,21 +1,31 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Business.Abstract;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebUI.Models;
+using WebUI.ViewModels;
 
 namespace WebUI.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ICourseService _courseService;
+        private readonly IArticleService _articleService;
+        public HomeController(ILogger<HomeController> logger, ICourseService courseService, IArticleService articleService)
         {
             _logger = logger;
+            _courseService = courseService;
+            _articleService = articleService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            HomeVM vm = new()
+            {
+                CourseList= await _courseService.GetHomeCourses(),
+                ArticleList=await _articleService.GetHomeArticles(),
+            };
+            return View(vm);
         }
 
         public IActionResult Privacy()

@@ -40,6 +40,7 @@ builder.Services.AddScoped<IArticleDal, EfArticleDal>();
 builder.Services.AddScoped<IVideoDal, EFVideoDal>();
 builder.Services.AddScoped<ISkillDal, EFSkillDal>();
 builder.Services.AddScoped<ICourseToSkillDal, EFCourseToSkillDal>();
+builder.Services.AddScoped<IArticleToTagDal, EfArticleToTagDal>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<IContactFormService, ContactFormService>();
@@ -50,6 +51,8 @@ builder.Services.AddScoped<IArticleService, ArticleService>();
 builder.Services.AddScoped<IArticleImageService, ArticleImageService>();
 builder.Services.AddScoped<ISkillService, SkillService>();
 builder.Services.AddScoped<ICourseToSkillService, CourseToSkillService>();
+builder.Services.AddScoped<IArticleToTagService, ArticleToTagService>();
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();

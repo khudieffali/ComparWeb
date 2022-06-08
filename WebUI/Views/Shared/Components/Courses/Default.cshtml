@@ -1,0 +1,9 @@
+﻿@model List<Course>
+
+<ul class="dropdown-menu">
+    @foreach (var item in Model)
+    {
+         <li class="nav-item"><a class="nav-link" asp-controller="Course" asp-action="CourseDetail" asp-route-id="@item.Id">@item.Name</a></li>
+    }
+   
+</ul>

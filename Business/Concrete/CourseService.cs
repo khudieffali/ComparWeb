@@ -37,6 +37,14 @@ namespace Business.Concrete
         {
             return await _dal.GetAllInclude(x=>!x.IsDeleted);
         }
+        public  List<Course> GetCoursesNoAsync()
+        {
+            return _dal.GetAll(x=>!x.IsDeleted);
+        }
+        public async Task<List<Course>> GetHomeCourses()
+        {
+            return await _dal.GetAllHomeInclude(x => !x.IsDeleted);
+        }
 
         public async Task UpdateCourse(Course course)
         {

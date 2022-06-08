@@ -1,0 +1,258 @@
+﻿@model Entities.Concrete.Article
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<style>
+    .mainPhoto {
+        border: 1px solid gray;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #F2F5FA;
+    }
+
+        .mainPhoto input {
+            padding-bottom: 8px;
+        }
+
+    .coverPhoto input {
+        padding-bottom: 8px;
+    }
+
+    .coverPhoto {
+        border: 1px solid gray;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #F2F5FA;
+    }
+
+    .label-photo {
+        background: gold;
+        padding: 12px 25px;
+        color: #fff;
+        margin: 10px 0;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    a {
+        text-decoration: none;
+        margin: 15px 0;
+    }
+</style>
+
+
+
+<h1>Edit</h1>
+
+<h4>Article</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form id="EditForm" asp-action="Edit" method="post" enctype="multipart/form-data" >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="CreatedDate" />
+            <input type="hidden" asp-for="UpdatedDate" />
+            <input type="hidden" asp-for="MainPhoto" />
+            <input type="hidden" asp-for="CoverPhoto" />
+            <input type="hidden" asp-for="ArticleImages" />
+            <input type="hidden" asp-for="ArticleToTags" />
+             @{
+                string[] arrTag = Model.ArticleToTags != null ? Model.ArticleToTags.Select(x => x.TagId.ToString()).ToArray() : null;
+                string tagIds = @String.Join("-", arrTag);
+                string[] arrPic = Model.ArticleImages != null ? Model.ArticleImages.Select(x => x.Id.ToString()).ToArray() : null;
+                string pictureIds = @String.Join("-", arrPic);
+            }
+             <input name="oldTags" type="hidden" value="@tagIds" />
+             <input name="oldPictures" type="hidden" value="@pictureIds" />
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slug" class="control-label"></label>
+                <input asp-for="Slug" class="form-control" />
+                <span asp-validation-for="Slug" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <input asp-for="Content" class="form-control" />
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaDescription" class="control-label"></label>
+                <input asp-for="MetaDescription" class="form-control" />
+                <span asp-validation-for="MetaDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group  mb-2 mainPhoto">
+                <label asp-for="MainPhoto" class="control-label"></label>
+                <input type="file" name="newMainPhoto" class="form-control" />
+                <span asp-validation-for="MainPhoto" class="text-danger"></span>
+            </div>
+            <div class="form-group  mb-2 coverPhoto">
+                <label asp-for="CoverPhoto" class="control-label"></label>
+                <input type="file" name="newCoverPhoto" class="form-control" />
+                <span asp-validation-for="CoverPhoto" class="text-danger"></span>
+            </div>
+               <div class="form-group mb-2 coverPhoto">
+                 <label>Article Photos</label>
+                    <br/>
+                <label for="pictureInput" class="control-label label-photo">Select Photo (<span>0</span>) </label>
+                <input type="file" id="pictureInput" name="PictureUrlss" class="form-control d-none" multiple />
+                <span asp-validation-for="ArticleImages" class="text-danger"></span>
+                <input type="hidden" name="removePicturesIds" id="removePicturesIds" />
+                  <div id="pictureList" class="d-flex flex-wrap">
+                     @if (Model.ArticleImages != null)
+                    {
+                        foreach (var pic in Model.ArticleImages)
+                        {
+                            <div class="itemPicture col-lg-3 col-sm-6 m-t-50">
+                                <img class="img-fluid img-thumbnail" src="@pic.ArticleImg" />
+                                <br />
+                                <br />
+                                <button class="btn btn-danger btn-remove" picture-id="@pic.Id" myFile="" type="button" onclick=removePicture(this)>
+                                    Remove Picture
+                                </button>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class="form-control">
+                    <option value=0 disabled selected>...Kurs Mövzusu Seçin...</option>
+                    @foreach (var item in ViewBag.catList as List<Entities.Concrete.Category>)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label name="TagIds" class="control-label"></label>
+                <select id="framework" name="TagIds" multiple class="form-control" style="background-color:white">
+                    @foreach (var item in ViewBag.tagList as List<Entities.Concrete.Tag>)
+                    {
+                        var oldTags = Model.ArticleToTags.Select(x => x.TagId).ToList();
+                        if (oldTags.Contains(item.Id))
+                        {
+                            <option selected value="@item.Id">@item.Name</option>
+                            
+                        }else{
+                        <option value="@item.Id">@item.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+              <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="InActive" /> @Html.DisplayNameFor(model => model.InActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<div class="hiddenPicture col-lg-3 col-sm-6 d-none m-t-50">
+    <img class="img-fluid img-thumbnail" src="/downloads/04049637-79f8-4deb-b5ab-dd2ebc40f174123652965_100505961875255_1192301689523879993_n.jpg" />
+    <br />
+    <br />
+    <button class="btn btn-danger btn-remove" myFile="" type="button" onclick=removePicture(this)>
+        Remove Picture
+    </button>
+</div>
+@section Scripts {
+    <script>
+            $(document).ready(function(){
+              $('#framework').multiselect({
+            nonSelectedText: 'Teq seçin',
+            enableFiltering: true,
+            enableCaseInsensitiveFiltering: true,
+              buttonWidth:'100%',
+              });
+          });
+           let ArticleImages=[];
+           var form_data="";
+           $("#pictureInput").change(function(){
+               ArticleImages.push(...this.files);
+               const pictures=[...this.files];
+               for(let i=0;i<pictures.length;i++){
+                   let pic=pictures[i]
+                    const pictureItem=$(".hiddenPicture").clone(); 
+                   pictureItem.removeClass("hiddenPicture")
+                   pictureItem.addClass("itemPicture")
+                   const reader=new FileReader();
+                   reader.onload=function(res){
+                   pictureItem.find("img").attr("src",res.target.result)
+               }  
+               reader.readAsDataURL(pic);
+               pictureItem.find(".btn-remove").attr("myFile",pic.name)
+               pictureItem.removeClass("d-none")
+               $("#pictureList").append(pictureItem)
+               }
+               $(".label-photo span").text(ArticleImages.length)
+             $("#pictureInput").val("")
+            })
+            $("#EditForm").submit(function(e){
+                e.preventDefault();
+                form_data=new FormData(this);
+                for(let pic of ArticleImages){
+                    form_data.append("PictureUrlss",pic)
+                }   
+                $.ajax({
+                    url:"/ComparAdmin/Articles/Edit",
+                    data:form_data,
+                     type:"POST",
+                    dataType:'json',
+                    processData:false,
+                    contentType:false,
+                    success:function(){
+                        Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: "Dəyişiklik uğurla əlavə edildi",
+                                showConfirmButton: false,
+                                timer: 1500
+                              })
+                             setTimeout( function(){
+                               window.history.back();
+                             } ,1500);
+                    }
+                })
+            })
+           let removePictureIdList=[];
+        function removePicture(element){
+            let picId=$(element).attr("picture-id");
+            if(typeof picId!="undefined"){
+                removePictureIdList.push(picId);
+                $("#removePicturesIds").val(removePictureIdList.join("-"));
+            }
+           let pictureName= $(element).attr("myFile")
+             ArticleImages=ArticleImages.filter(c=>c.name!==pictureName);
+             $(".label-photo span").text(ArticleImages.length)
+             $("#pictureInput").val("")
+             $(element).parents(".itemPicture").remove();
+         }
+          </script>
+
+       
+   
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

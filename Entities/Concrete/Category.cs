@@ -20,5 +20,6 @@ namespace Entities.Concrete
         public string Slug { get; set; }=null!;
         public string? PhotoUrl { get; set; }
         public bool IsDeleted { get; set; }
+        public virtual List<Article>? Articles { get; set; }
     }
 }

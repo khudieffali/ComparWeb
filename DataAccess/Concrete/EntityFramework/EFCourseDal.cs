@@ -28,6 +28,25 @@ namespace DataAccess.Concrete.EntityFramework
                 .Include(c=>c.CourseToSkills)
                 .ThenInclude(c=>c.Skill)
                 .Include(c=>c.CourseTopics)
+                .OrderByDescending(x=>x.CreatedDate)
+                .AsQueryable();
+
+            if (filters != null)
+            {
+                courses = courses.Where(filters);
+            }
+            return await courses.ToListAsync();
+        }
+        public async Task<List<Course>> GetAllHomeInclude(Expression<Func<Course, bool>>? filters)
+        {
+            using ComparDbContext context = new();
+            var courses = context.Courses
+                .Where(c => !c.IsDeleted && c.InActive)
+                .Include(c => c.CourseToSkills)
+                .ThenInclude(c => c.Skill)
+                .Include(c => c.CourseTopics)
+                .OrderByDescending(x => x.CreatedDate)
+                .Take(6)
                 .AsQueryable();
 
             if (filters != null)

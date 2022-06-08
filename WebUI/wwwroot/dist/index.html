@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>Document</title>
+    <!--- <script>
+        let counts=setInterval(updated,15);
+        let upto=0;
+      function updated(){
+    var count= document.getElementById("counter");
+    var countEnd= document.getElementById("endCount");
+    console.log(parseInt(endCount.textContent))
+        count.innerHTML=`${++upto}+`;
+       if(upto===parseInt(endCount.textContent))
+       {
+        clearInterval(counts);
+       }
+      }
+    </script> -->
+<link href="shared/css/shared.css" rel="stylesheet"><link href="sharedDynamic/css/sharedDynamic.css" rel="stylesheet"></head>
+
+<body>
+ 
+    <!--- header --->
+    <header>
+
+        <div id="navbar" class="navbar-area navbar-style-2">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <div class="container-fluid">
+
+                    <a class="navbar-brand" style="width: 110px;" href="index.html">
+                        <img src="images/compar-logo-white.svg" class="white-logo" alt="logo">
+                        <img src="images/compar-logo-gradiant.svg" class="black-logo" alt="">
+                    </a>
+                
+
+                    <button class="btn-navbar-toggler toggle-menu" onclick="toggleMenu()" type="button">
+                        <span class="icon-bar top-bar"></span>
+                        <span class="icon-bar middle-bar"></span>
+                        <span class="icon-bar bottom-bar"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav scroll">
+                            <li class="nav-item"><a class="nav-link" href="/#">TƏDRİS PAKETLƏRİ
+                                    <i class="icofont-thin-down"></i></a>
+                                <ul class="dropdown-menu ">
+                                    <li class="nav-item"><a class="nav-link" href="/portfolio/">Portfolio</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/portfolio-details/">Portfolio
+                                            Details</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link" href="about.html">AKADEMİYA
+                                    <i class="icofont-thin-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/services/">Services</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/service-details/">Services
+                                            Details</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/portfolio/">Portfolio</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/portfolio-details/">Portfolio
+                                            Details</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/team/">Team</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/pricing/">Pricing</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/faq/">FAQ</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/404/">404 error</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/contact/">Contact</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a>
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link">BLOQ
+                                    <i class="icofont-thin-down"></i></a>
+                                <ul class="dropdown-menu right-drop">
+                                    <li class="nav-item"><a class="nav-link" href="blog.html">Bloq</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="blogDetail.html">Bloq Detail
+                                        </a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item"><a class="nav-link" href="contact.html">ƏLAQƏ</a></li>
+
+                        </ul>
+                        <!-- <div class="others-options"><a class="btn btn-primary" href="/pricing/">Let's Begin</a></div> -->
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+
+       
+    </header>
+    <div class="hero-banner overly hero-bg1" id="index-bg">
+        <!-- navbarInfo -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 ">
+                    <div class="navbarInfo">
+                        <div class="brk-header__element brk-header__element_skin-2 brk-header__item">
+                            <a href="/" class="brk-header__element--wrap">
+                                <i class="fa fa-phone"></i>
+                                <span class="brk-header__element--label font__weight-semibold">055 555 55 59</span>
+                            </a>
+                        </div>
+                        <div class="brk-header__element brk-header__element_skin-2 brk-header__item">
+                            <a href="mailto:info@compar.az" class="brk-header__element--wrap">
+                                <i class="fa fa-envelope"></i>
+                                <span class="brk-header__element--label font__weight-medium">compar@gmail.com</span>
+                            </a>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+        
+        <div id="particles-js">
+            <div>
+                <canvas style="width:100%;height:100%" width="1837" height="556"></canvas>
+            </div>
+        </div>
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="main-banner-content text-center">
+                        <h1>Creative agency</h1>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt
+                            ut labore et dolore magna aliqua.</p>
+
+                        <a class="btn btn-primary" href="">Get Started</a>
+                        <a class="btn btn-secondary" href="/#play-video">
+                            <i class="icofont-ui-play"></i> How it works
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Works -->
+    <section class="case-studies-area ptb-100">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Works</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 mt-40">
+                    <div class="single-case-studies bg1">
+                        <div class="content">
+                            <span><a href="/portfolio/">Development</a></span>
+                            <h3><a href="/portfolio-details/">Designing a better cinema experience</a></h3>
+                        </div><a class="btn btn-primary" href="course.html">View Case Study</a>
+                        <div class="shape"><img src="images/ourWork-first-shap1.png" alt="logo"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-40">
+                    <div class="single-case-studies bg2">
+                        <div class="content"><span><a href="/portfolio/">Development</a></span>
+                            <h3><a href="/portfolio-details/">Building design process within teams</a></h3>
+                        </div><a class="btn btn-primary" href="/portfolio-details/">View Case Study</a>
+                        <div class="shape"><img src="images/ourWork-first-shap1.png" alt="logo"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-40">
+                    <div class="single-case-studies bg3">
+                        <div class="content"><span><a href="/portfolio/">Development</a></span>
+                            <h3><a href="/portfolio-details/">How intercom brings play into their design process</a>
+                            </h3>
+                        </div><a class="btn btn-primary" href="/portfolio-details/">View Case Study</a>
+                        <div class="shape"><img src="images/ourWork-first-shap1.png" alt="logo"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-40">
+                    <div class="single-case-studies bg4">
+                        <div class="content"><span><a href="/portfolio/">Development</a></span>
+                            <h3><a href="/portfolio-details/">Stuck with to-do list, I created a new app for myself</a>
+                            </h3>
+                        </div><a class="btn btn-primary" href="/portfolio-details/">View Case Study</a>
+                        <div class="shape"><img src="images/ourWork-first-shap1.png" alt="logo"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-40">
+                    <div class="single-case-studies bg5">
+                        <div class="content"><span><a href="/portfolio/">Development</a></span>
+                            <h3><a href="/portfolio-details/">Examples of different types of sprints</a></h3>
+                        </div><a class="btn btn-primary" href="/portfolio-details/">View Case Study</a>
+                        <div class="shape"><img src="images/ourWork-first-shap1.png" alt="logo"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-40">
+                    <div class="single-case-studies bg6">
+                        <div class="content"><span><a href="/portfolio/">Development</a></span>
+                            <h3><a href="/portfolio-details/">Redesigning the New York times app</a></h3>
+                        </div><a class="btn btn-primary" href="/portfolio-details/">View Case Study</a>
+                        <div class="shape"><img src="images/ourWork-first-shap1.png" alt="logo"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="view-more-work mt-0"><a class="btn btn-primary" href="/portfolio/">View More Work</a></div>
+        </div>
+    </section>
+
+    <!-- aboutUs -->
+    <section class="about-area ptb-100">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-12">
+                    <div class="about-image"><img src="images/aboutUs.jpg" alt="image" class="rounded-10">
+                        <div class="video-box">
+                            <div class="video-btn"><i class="pe-7s-play"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-12">
+                    <div class="about-content about-content-two">
+                        <div class="section-title">
+                            <h2>About Us</h2>
+                            <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed
+                                viverra nunc tinci dunt nec elei fend et tiram.</p>
+                        </div>
+                        <div class="about-text">
+                            <h4>Who We Are</h4>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                                laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                                architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                        <div class="about-text">
+                            <h4>Our History</h4>
+                            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising
+                                pain was born and I will give you a complete account of the system, and expound the
+                                actual teachings of the great explorer of the truth.</p>
+                        </div>
+                        <div class="about-text">
+                            <h4>Our Mission</h4>
+                            <ul>
+                                <li><i class="pe-7s-check"></i>Lorem Ipsum is simply dummy text of the
+                                    printing and
+                                    typesetting industry.</li>
+                                <li><i class="pe-7s-check"></i>It is a long established fact that a reader
+                                    will be
+                                    distracted by the readable content of a page when looking at its layout.</li>
+                                <li><i class="pe-7s-check"></i>Contrary to popular belief, Lorem Ipsum is
+                                    not simply
+                                    random text. It has roots in a piece of classical Latin literature.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Work Process -->
+    <section class="work-process-area ptb-100">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Work Process</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore
+                    et dolore magna aliqua.</p>
+            </div>
+            <div class="work-process">
+                <img src="images/ourWork.png" alt="logo">
+                <div class="work-process-list">
+                    <div class="single-work-process">
+                        <div class="icon">
+                            <i class="pe-7s-display1"></i>
+                        </div>
+                        <h3>Surface</h3>
+                        <span>Visual Design</span>
+                    </div>
+                    <div class="single-work-process">
+                        <div class="icon"><i class="pe-7s-display2"></i></div>
+                        <h3>Skeleton</h3>
+                        <span>Wireframes</span>
+                    </div>
+                    <div class="single-work-process">
+                        <div class="icon"><i class="pe-7s-airplay"></i></div>
+                        <h3>Structure</h3>
+                        <span>Screen Flow</span>
+                    </div>
+                    <div class="single-work-process">
+                        <div class="icon"><i class="pe-7s-note2"></i></div>
+                        <h3>Scope</h3>
+                        <span>Requirements</span>
+                    </div>
+                    <div class="single-work-process">
+                        <div class="icon"><i class="pe-7s-light"></i></div>
+                        <h3>User Research</h3>
+                        <span>User Research</span>
+                    </div>
+                    <div class="single-work-process">
+                        <div class="icon"><i class="pe-7s-sun"></i></div>
+                        <h3>Implement</h3>
+                        <span>Lunch/Analyse</span>
+                    </div>
+                </div>
+                <img src="images/ourWork2.png" class="rotateme circle-image" alt="image">
+            </div>
+        </div>
+    </section>
+
+
+   <!-- We always try to understand users expectation -->
+   <section class="funfacts-area ptb-100 bg-fcfbfb">
+    <div class="container">
+        <div class="section-title">
+            <h2>We always try to understand users expectation</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua.</p>
+        </div>
+
+        <div id="funfacts" class="row justify-content-center">
+            <div class="col-lg-3 col-sm-6">
+                <div class="animated" style="animation-duration: 1s;">
+                    <div class="funfact">
+                        <i class="icofont-checked"></i>
+                        <h3 id="value1">100</h3>
+                        <p>Completed Projects</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="animated" style="animation-duration: 1.5s;">
+                    <div class="funfact"><i class="icofont-ui-love"></i>
+                        <h3 id="value2">100</h3>
+                        <p>Completed Projects</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="animated" style="animation-duration: 2s;">
+                    <div class="funfact"><i class="icofont-tasks"></i>
+                        <h3 id="value3">100</h3>
+                        <p>Completed Projects</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="animated" style="animation-duration: 2.5s;">
+                    <div class="funfact"><i class="icofont-win-trophy"></i>
+                        <h3 class="value4" id="value4">
+                            700
+                        </h3>
+                        <!-- <h3 id="endValue" style="display: none;">1001</h3>    -->
+                        <p>Completed Projects</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-cta-box">
+            <h3>Have any questions about us?</h3>
+            <p>Don't hesitate to contact us</p><a class="btn btn-primary" href="/contact/">Contact Us</a>
+        </div>
+        <div class="map-bg"><img src="images/contactUs.png" alt="map"></div>
+    </div>
+</section>
+
+  <!---- Latest News --->
+  <section class="blog-area ptb-100">
+    <div class="container">
+        <div class="section-title">
+            <h2>Latest News</h2>
+            <p>Lorem ipsum dolorrr sittt amet, consecteturrr adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua.</p>
+        </div>
+
+        <div class="owl-carousel blog-slides owl-theme">
+            <div class="single-blog-item">
+                <div class="blog-image">
+                    <a href="/blog-details/">
+                        <img src="images/lastestNews1.jpg" alt="image"></a>
+                    <div class="post-tag"><a href="/blog/">Agency</a></div>
+                </div>
+                <div class="blog-post-content"><span class="date">Feb 16, 2020</span>
+                    <h3><a href="/blog-details/">The Best Marketing top use Management Tools</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna.</p><a class="read-more-btn" href="/blog-details/">Read
+                        More<i class="fa-solid fa-angles-right"></i></a>
+                </div>
+            </div>
+            <div class="single-blog-item">
+                <div class="blog-image">
+                    <a href="/blog-details/">
+                        <img src="images/lastestNews1.jpg" alt="image"></a>
+                    <div class="post-tag"><a href="/blog/">Agency</a></div>
+                </div>
+                <div class="blog-post-content"><span class="date">Feb 16, 2020</span>
+                    <h3><a href="/blog-details/">The Best Marketing top use Management Tools</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna.</p><a class="read-more-btn" href="/blog-details/">Read
+                        More<i class="fa-solid fa-angles-right"></i></a>
+                </div>
+            </div>
+            <div class="single-blog-item">
+                <div class="blog-image">
+                    <a href="/blog-details/">
+                        <img src="images/lastestNews1.jpg" alt="image"></a>
+                    <div class="post-tag"><a href="/blog/">Agency</a></div>
+                </div>
+                <div class="blog-post-content"><span class="date">Feb 16, 2020</span>
+                    <h3><a href="/blog-details/">The Best Marketing top use Management Tools</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna.</p><a class="read-more-btn" href="/blog-details/">Read
+                        More<i class="fa-solid fa-angles-right"></i></a>
+                </div>
+            </div>
+            <div class="single-blog-item">
+                <div class="blog-image">
+                    <a href="/blog-details/">
+                        <img src="images/lastestNews1.jpg" alt="image"></a>
+                    <div class="post-tag"><a href="/blog/">Agency</a></div>
+                </div>
+                <div class="blog-post-content"><span class="date">Feb 16, 2020</span>
+                    <h3><a href="/blog-details/">The Best Marketing top use Management Tools</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna.</p><a class="read-more-btn" href="/blog-details/">Read
+                        More<i class="fa-solid fa-angles-right"></i></a>
+                </div>
+            </div>
+            <div class="single-blog-item">
+                <div class="blog-image">
+                    <a href="/blog-details/">
+                        <img src="images/lastestNews1.jpg" alt="image"></a>
+                    <div class="post-tag"><a href="/blog/">Agency</a></div>
+                </div>
+                <div class="blog-post-content"><span class="date">Feb 16, 2020</span>
+                    <h3><a href="/blog-details/">The Best Marketing top use Management Tools</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna.</p><a class="read-more-btn" href="/blog-details/">Read
+                        More<i class="fa-solid fa-angles-right"></i></a>
+                </div>
+            </div>
+            <div class="single-blog-item">
+                <div class="blog-image">
+                    <a href="/blog-details/">
+                        <img src="images/lastestNews1.jpg" alt="image"></a>
+                    <div class="post-tag"><a href="/blog/">Agency</a></div>
+                </div>
+                <div class="blog-post-content"><span class="date">Feb 16, 2020</span>
+                    <h3><a href="/blog-details/">The Best Marketing top use Management Tools</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna.</p><a class="read-more-btn" href="/blog-details/">Read
+                        More<i class="fa-solid fa-angles-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
+
+
+    <!-- footer -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-3">
+                    <div class="single-footer-widget">
+                        <div class="logo">
+                            <a class="footer-logo" style="width: 110px;" href="index.html">
+                                <img src="images/compar-logo-gradiant.svg" alt="">
+                            </a>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                        <ul class="social-links">
+                            <li><a target="_blank" href="/creative-agency-2/#"><i
+                                        class="fa-brands fa-instagram"></i></a></li>
+                            <li><a target="_blank" href="/creative-agency-2/#"><i
+                                        class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a target="_blank" href="/creative-agency-2/#"><i class="fa-brands fa-linkedin"></i></a>
+                            <li><a target="_blank" href="/creative-agency-2/#"><i class="fa-brands fa-twitter"></i></a>
+                            </li>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="single-footer-widget">
+                        <h3>Explore</h3>
+                        <ul class="list">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/about/">About</a></li>
+                            <li><a href="/services/">Services</a></li>
+                            <li><a href="/portfolio/">Portfolio</a></li>
+                            <li><a href="/team/">Team</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-lg-3">
+                    <div class="single-footer-widget">
+                        <h3>Quick Links</h3>
+                        <ul class="list">
+                            <li><a href="">Contact Us</a></li>
+                            <li><a href="">Pricing</a></li>
+                            <li><a href="">Faq</a></li>
+                            <li><a href="">Privacy Policy</a></li>
+                            <li><a href="">Terms &amp; Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="single-footer-widget">
+                        <h3>Get in Touch</h3>
+                        <ul class="get-in-touch">
+                            <li class="mb-4 d-flex align-items-center"><i class="icofont-home"></i>2750
+                                Quadra Street Victoria, Canada.</li>
+                            <li class="mb-4"><i class="icofont-live-support"></i><a
+                                    href="tel:+324-9442-515">+324-9442-515</a>
+                            </li>
+                            <li class="mb-4"><i class="icofont-envelope"></i><a
+                                    href="mailto:hello@pungent.com">hello@pungent.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <p>Copyright ©
+                    <!-- -->2022
+                    <!-- --> Pungent. All Rights Reserved By <a href="" target="_blank">EnvyTheme</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- scroll-to-top -->
+    <div id="myBtn" title="Go to top" class="scroll-to-top">
+        <i class="pe-7s-angle-up"></i>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    
+<script defer src="shared/js/shared.bundle.js"></script><script defer src="sharedDynamic/js/sharedDynamic.bundle.js"></script></body>
+
+
+</html>

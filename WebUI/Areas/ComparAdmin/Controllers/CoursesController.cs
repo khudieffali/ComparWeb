@@ -15,7 +15,7 @@ namespace WebUI.Areas.ComparAdmin.Controllers
         private readonly ISkillService _skillService;
         private readonly ICourseToSkillService _courseToSkillService;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public CoursesController(ICourseService service, IWebHostEnvironment webHost, IWebHostEnvironment webHostEnvironment, ISkillService skillService, ICourseToSkillService courseToSkillService)
+        public CoursesController(ICourseService service,IWebHostEnvironment webHostEnvironment, ISkillService skillService, ICourseToSkillService courseToSkillService)
         {
             _service = service;
             _webHostEnvironment = webHostEnvironment;
@@ -183,10 +183,8 @@ namespace WebUI.Areas.ComparAdmin.Controllers
                 string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + photo.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    photo.CopyTo(fileStream);
-                }
+                using var fileStream = new FileStream(filePath, FileMode.Create);
+                photo.CopyTo(fileStream);
             }
             return uniqueFileName;
         }

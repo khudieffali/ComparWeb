@@ -25,7 +25,7 @@ namespace Business.Concrete
 
         public async Task<List<Category>> GetCategories()
         {
-            return _dal.GetAll(x=>!x.IsDeleted);
+            return await _dal.GetAllInclude(x=>!x.IsDeleted);
         }
 
         public async Task<Category> GetCategoryById(int? id)

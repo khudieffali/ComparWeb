@@ -30,7 +30,7 @@
 
     .label-photo {
         background: gold;
-        padding: 10px 20px;
+        padding: 12px 25px;
         color: #fff;
         margin: 10px 0;
         cursor: pointer;
@@ -88,18 +88,15 @@
                 <span asp-validation-for="CoverPhoto" class="text-danger"></span>
             </div>
             <div class="form-group mb-2 coverPhoto">
-                <label asp-for="ArticleImages" class="control-label label-photo">Select Photo (<span>0</span>) </label>
-                <label asp-for="ArticleImages" class="form-control"></label>
-                <input type="file" id="pictureInput" asp-for="ArticleImages" class="form-control" multiple />
+                 <label>Article Photos</label>
+                    <br/>
+                <label for="pictureInput" class="control-label label-photo">Select Photo (<span>0</span>) </label>
+                <input type="file" id="pictureInput" asp-for="ArticleImages" class="form-control d-none" multiple />
                 <span asp-validation-for="ArticleImages" class="text-danger"></span>
                 <div id="pictureList" class="d-flex flex-wrap">
                 </div>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input me-3" asp-for="InActive" /> @Html.DisplayNameFor(model => model.InActive)
-                </label>
-            </div>
+        
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
                 <select asp-for="CategoryId" class="form-control">
@@ -119,6 +116,12 @@
                         <option value="@item.Id">@item.Name</option>
                     }
                 </select>
+            </div>
+                <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input me-3" asp-for="InActive" /> <br />
+                    @Html.DisplayNameFor(model => model.InActive)
+                </label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary btn-upload" />
@@ -143,72 +146,82 @@
 
 @section Scripts {
 <script>
-          $(document).ready(function(){
-            $('#framework').multiselect({
-          nonSelectedText: 'Teq seçin',
-          enableFiltering: true,
-          enableCaseInsensitiveFiltering: true,
-            buttonWidth:'100%'
-            });
-        });
-         let ArticleImages=[];
-         var form_data="";
-               $("#pictureInput").change(function(){
-                   ArticleImages.push(...this.files);
-                   const pictures=[...this.files];
-                   for(let i=0;i<pictures.length;i++){
-                       let pic=pictures[i]
-                        const pictureItem=$(".hiddenPicture").clone();
-                       pictureItem.removeClass("hiddenPicture")
-                       pictureItem.addClass("itemPicture")
-                       const reader=new FileReader();
-                       reader.onload=function(res){
-                       pictureItem.find("img").attr("src",res.target.result)
-                   }
-                   reader.readAsDataURL(pic);
-                   pictureItem.find(".btn-remove").attr("myFile",pic.name)
-                    pictureItem.removeClass("d-none")
-                   $("#pictureList").append(pictureItem)
-                   }
+       //function backWithMessage(success, message){
+       //    let oldUrl = document.referrer;
+       //    oldUrl = oldUrl.includes('?') ? oldUrl.slice(0, oldUrl.indexOf('?')) : oldUrl
+       //    const queryString = new URLSearchParams({success, message}).toString()
+       //    const backUrl = oldUrl + '?' + queryString
+       //    window.location = backUrl
+       //}
+       //geri url e Message gondermek
+            $(document).ready(function(){
+              $('#framework').multiselect({
+            nonSelectedText: 'Teq seçin',
+            enableFiltering: true,
+            enableCaseInsensitiveFiltering: true,
+              buttonWidth:'100%',
+              });
+          });
+           let ArticleImages=[];
+           var form_data="";
+                 $("#pictureInput").change(function(){
+                     ArticleImages.push(...this.files);
+                     const pictures=[...this.files];
+                     for(let i=0;i<pictures.length;i++){
+                         let pic=pictures[i]
+                          const pictureItem=$(".hiddenPicture").clone();
+                         pictureItem.removeClass("hiddenPicture")
+                         pictureItem.addClass("itemPicture")
+                         const reader=new FileReader();
+                         reader.onload=function(res){
+                         pictureItem.find("img").attr("src",res.target.result)
+                     }
+                     reader.readAsDataURL(pic);
+                     pictureItem.find(".btn-remove").attr("myFile",pic.name)
+                      pictureItem.removeClass("d-none")
+                     $("#pictureList").append(pictureItem)
+                     }
+                     $(".label-photo span").text(ArticleImages.length)
+                  $("#pictureInput").val("");
+                  })
+                  $("#CreateForm").submit(function(e){
+                      e.preventDefault()
+                      console.log(ArticleImages)
+                      form_data=new FormData(this);
+                      for(let pic of ArticleImages){
+                          form_data.append("ArticleImages",pic)
+                      }
+              
+                      $.ajax({
+                          url:"/ComparAdmin/Articles/Create",
+                          data:form_data,
+                          type:"POST",
+                          dataType:'json',
+                          processData:false,
+                          contentType:false,
+                          success:function(){
+                                Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: "Məqaləniz uğurla əlavə edildi",
+                                showConfirmButton: false,
+                                timer: 1500
+                              })
+                             setTimeout( function(){
+                               window.history.back();
+                             } ,1500);
+                          }
+                      })
+                  })
+              function removePicture(element){
+                 let pictureName=$(element).attr("myFile")
+                 console.log(pictureName)
+                 ArticleImages=ArticleImages.filter(c=>c.name!=pictureName);
+                 console.log(ArticleImages)
                    $(".label-photo span").text(ArticleImages.length)
-                $("#pictureInput").val("");
-                })
-                $("#CreateForm").submit(function(e){
-                    e.preventDefault()
-                    console.log(ArticleImages)
-                    form_data=new FormData(this);
-                    for(let pic of ArticleImages){
-                        form_data.append("ArticleImages",pic)
-                    }
-                    $.ajax({
-                        url:"/ComparAdmin/Articles/Create",
-                        data:form_data,
-                        type:"POST",
-                        dataType:'json',
-                        processData:false,
-                        contentType:false,
-                        success:function(){
-                            Swal.fire({
-                              position: 'top-end',
-                              icon: 'success',
-                              title: 'Məqalə uğurla əlavə edildi',
-                              showConfirmButton: false,
-                              timer: 1000
-                            })
-                        }
-                    })
-                })
-            function removePicture(element){
-               let pictureName=$(element).attr("myFile")
-               console.log(pictureName)
-               ArticleImages=ArticleImages.filter(c=>c.name!=pictureName);
-               console.log(ArticleImages)
-                 $(".label-photo span").text(ArticleImages.length)
-                $("#pictureInput").val("");
-                $(element).parents(".itemPicture").remove();
-             }
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/6.0.0-beta.2/dropzone-min.js">
+                  $("#pictureInput").val("");
+                  $(element).parents(".itemPicture").remove();
+               }
 </script>
     @{
     await Html.RenderPartialAsync("_ValidationScriptsPartial");

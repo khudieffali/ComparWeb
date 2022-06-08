@@ -25,7 +25,7 @@ namespace Business.Concrete
             DateTime custDateTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, myZone);
             article.CreatedDate = custDateTime;
             article.UpdatedDate = custDateTime;
-            _dal.AddMyArticle(article);
+            await _dal.AddMyArticle(article);
         }
 
         public async Task<Article> GetByIdArticle(int? id)
@@ -37,14 +37,25 @@ namespace Business.Concrete
         {
             return await _dal.GetAllInclude(x=>!x.IsDeleted);
         }
-
+        public async Task<List<Article>> GetHomeArticles()
+        {
+            return await _dal.GetAllHomeInclude(x => !x.IsDeleted);
+        }
+        public async Task<List<Article>> GetPopularsArticles()
+        {
+            return await _dal.GetAllPopularsInclude(x => !x.IsDeleted);
+        }
+        public async Task<List<Article>> GetSearchArticles(string? q,int? categoryId)
+        {
+            return await _dal.GetAllSearchInclude(x=>!x.IsDeleted,q,categoryId);
+        }
         public async Task UpdateArticle(Article article)
         {
             DateTime utcTime = DateTime.UtcNow;
             TimeZoneInfo myZone = TimeZoneInfo.FindSystemTimeZoneById("Azerbaijan Standard Time");
             DateTime custDateTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, myZone);
             article.UpdatedDate = custDateTime;
-          _dal.Update(article);
+          await _dal.UpdateArticle(article);
         }
     }
 }

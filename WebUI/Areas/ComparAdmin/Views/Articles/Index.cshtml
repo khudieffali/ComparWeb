@@ -21,7 +21,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.CoverPhoto)
             </th>
-      
+
             <th>
                 @Html.DisplayNameFor(model => model.InActive)
             </th>
@@ -32,45 +32,54 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                 <img src="@Html.DisplayFor(modelItem => item.MainPhoto)" width="150"  height="160"/>
-            </td>
-            <td>
-                <img src="@Html.DisplayFor(modelItem => item.CoverPhoto)" width="150" height="160"/>
-            </td>
-                       @if(item.InActive == false)
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.MainPhoto)" width="150" height="160" />
+                </td>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.CoverPhoto)" width="150" height="160" />
+                </td>
+                @if (item.InActive == false)
                 {
-                      <td class="btn btn-danger text-white mt-2">
-                           Aktiv Deyil
+                    <td class="btn btn-danger text-white mt-2">
+                        Aktiv Deyil
                     </td>
                 }
                 else
                 {
-                     <td class="btn btn-success text-white mt-2">
-                      Aktivdir
+                    <td class="btn btn-success text-white mt-2">
+                        Aktivdir
                     </td>
                 }
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning" style="color:white">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary" style="color:white">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="color:white">Delete</a>
-            </td>
-        </tr>
-}
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning" style="color:white">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary" style="color:white">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="color:white">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 @section Scripts{
-    <script>
-        $(document).ready( function () {
-    $('#myTable').DataTable();
-     } );
-    </script>
+<script>
+            $(document).ready( function () {
+        $('#myTable').DataTable();
+         } );
+         //window.addEventListener('load', () => {
+         //    const urlParams = new URLSearchParams(window.location.search);
+         //    const params = Object.fromEntries(urlParams);
+         //    if (params.success) {
+            
+         //    }
+         //})
+
+</script>
 }

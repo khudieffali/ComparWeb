@@ -7,12 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\frontend\**" />
+    <Content Remove="wwwroot\frontend\**" />
+    <EmbeddedResource Remove="wwwroot\frontend\**" />
+    <None Remove="wwwroot\frontend\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\dist\images\compar-logo-gradiant.svg" />
+    <Content Remove="wwwroot\dist\images\compar-logo-white.svg" />
+    <Content Remove="wwwroot\dist\images\Pe-icon-7-stroke.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
 	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
 	  <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.5" />
 	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.5" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5" />
-	  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.4" />
+	  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.5" />
 		  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
   </ItemGroup>
 
@@ -23,6 +36,16 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\dist\683f791a735ea0d16b9b.js" />
+    <None Include="wwwroot\dist\9c33516aab48c61e3081.woff2" />
+    <None Include="wwwroot\dist\sharedDynamic\js\sharedDynamic.bundle.js" />
+    <None Include="wwwroot\dist\shared\js\shared.bundle.js" />
+    <None Include="wwwroot\dist\images\compar-logo-gradiant.svg" />
+    <None Include="wwwroot\dist\images\compar-logo-white.svg" />
+    <None Include="wwwroot\dist\images\Pe-icon-7-stroke.svg" />
   </ItemGroup>
 
 </Project>
